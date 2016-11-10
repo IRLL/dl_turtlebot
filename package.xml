@@ -2,7 +2,7 @@
 <package>
   <name>dl_turtlebot</name>
   <version>0.0.0</version>
-  <description></description>
+  <description>Packege for testing deep learning on the turtlebot.</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag --> 
   <!-- Example:  -->
