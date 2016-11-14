@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <model name="target">
+    <static>1</static>
+    <link name="target">
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.2 0.2 0.001</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material </uri>
+            <name>Gazebo/TurquoiseGlowOutline</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>

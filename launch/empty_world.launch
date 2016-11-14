@@ -1,5 +1,5 @@
 <launch>
-  <arg name="world_file"  default="$(find turtlebot_gazebo)/worlds/empty.world"/>
+  <arg name="world_file"  default="$(find dl_turtlebot)/worlds/grey.world"/>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="use_sim_time" value="true"/>
@@ -13,5 +13,19 @@
     <arg name="robot_name" value="robot1"/>
   </include>
 
+  <include file="$(find dl_turtlebot)/launch/includes/camera.xml">
+    <arg name="name" value="cam1"/>
+    <arg name="pose" value="-x -1 -z 4 -P 1.0471975512"/>
+  </include>
+
+  <include file="$(find dl_turtlebot)/launch/includes/camera.xml">
+    <arg name="name" value="cam2"/>
+    <arg name="pose" value="-x 3.0 -z 4 -P 1.570796327"/>
+  </include>
+
+  <node name="spawn_target" pkg="gazebo_ros" type="spawn_model"
+        args="-sdf -x 3 -z 0.001 -file $(find dl_turtlebot)/models/target.sdf -model target" />
+  <node name="spawn_boundary" pkg="gazebo_ros" type="spawn_model"
+        args="-sdf -file $(find dl_turtlebot)/models/boundary.sdf -model boundary" />
 
 </launch>

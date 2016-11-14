@@ -3,12 +3,12 @@
     - Base      : kobuki
     - Stacks    : hexagons
     - 3d Sensor : kinect
--->    
+-->
 <robot name="turtlebot" xmlns:xacro="http://ros.org/wiki/xacro">
-  
+
 
   <xacro:include filename="$(find turtlebot_description)/urdf/turtlebot_library.urdf.xacro" />
-  
+
   <kobuki/>
   <stack_hexagons parent="base_link"/>
   <sensor_kinect  parent="base_link"/>
@@ -40,6 +40,6 @@
 		</geometry>
 	</visual>
   </link>
-  <gazebo reference="orientation_box1"><material>Gazebo/Blue</material></gazebo>
-  <gazebo reference="orientation_box2"><material>Gazebo/Red</material></gazebo>
+  <gazebo reference="orientation_box1"><material>Gazebo/Red</material></gazebo>
+  <gazebo reference="orientation_box2"><material>Gazebo/Orange</material></gazebo>
 </robot>
