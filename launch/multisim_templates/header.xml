@@ -1,0 +1,11 @@
+<launch>
+
+  <arg name="world_name" default="$(find dl_turtlebot)/worlds/grey.world"/>
+
+  <!-- set use_sim_time flag -->
+  <param name="/use_sim_time" value="true" />
+
+  <!-- start gazebo servers-->
+  <!-- note that for each simulation, the GAZEBO_MASTER_URI is set to a
+       different port -->
+

@@ -1,19 +1,26 @@
 #!/usr/bin/env python
 import roslaunch
 import time
+import argparse
 
 
 if __name__ == "__main__":
-    launch = roslaunch.scriptapi.ROSLaunch()
-    launch.start()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("number_of_sims", type=int, help="number of simulators to launch")
 
-    for i in xrange(3):
-        gazebo_node = roslaunch.core.Node('gazebo_ros', 'gzserver',
-                                          args="-e ode worlds/empty.world",
-                                          env_args=[('GAZEBO_MASTER_URI',"http://localhost:{}".format(11345+i))],
-                                          namespace="/sim{}".format(i),
-                                          name="gazebo")
+    args = parser.parse_args()
 
-        launch.launch(gazebo_node)
+    path_prefix = "multisim_templates/"
 
-    launch.spin()
+    headerf = open(path_prefix + "header.xml", "r")
+    simf = open(path_prefix + "body.xml", "r")
+
+    headertxt = "".join(headerf.readlines())
+    simtxt = "".join(simf.readlines())
+
+    print headertxt
+
+    for i in xrange(args.number_of_sims):
+        print simtxt.format("sim{}".format(i+1), 11345+i)
+
+    print "</launch>"
