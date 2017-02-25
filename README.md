@@ -1,9 +1,6 @@
 #Usage
 To start the simulation, run
 ```sh
-roslaunch dl_turtlebot empty_world.launch
-```
-To convert the color image to grey, run
-```sh
-rosrun dl_turtlebot convert_grey.py
+roscd dl_turtlebot/launch
+python multisim.py <number of sims> | roslaunch -
 ```
