@@ -1,26 +1,29 @@
-   <group ns="{}">
+   <group ns="{namespace}">
      <node name="gazebo" pkg="gazebo_ros" type="gzserver" respawn="false" output="screen"
        args="-e ode $(arg world_name)" >
-       <env name="GAZEBO_MASTER_URI" value="http://localhost:{}" />
+       <env name="GAZEBO_MASTER_URI" value="http://localhost:{port}" />
      </node>
 
      <include file="$(find dl_turtlebot)/launch/includes/turtlebot.xml">
        <arg name="init_pose" value="-x 0 -y 0 -z 0"/>
        <arg name="robot_name" value="robot1"/>
+       <arg name="namespace" value="{namespace}" />
      </include>
 
      <include file="$(find dl_turtlebot)/launch/includes/camera.xml">
        <arg name="name" value="cam1"/>
        <arg name="pose" value="-x -1 -z 4 -P 1.0471975512"/>
+       <arg name="namespace" value="{namespace}" />
      </include>
 
      <include file="$(find dl_turtlebot)/launch/includes/camera.xml">
        <arg name="name" value="cam2"/>
        <arg name="pose" value="-x 3.0 -z 4 -P 1.570796327"/>
+       <arg name="namespace" value="{namespace}" />
      </include>
 
      <node name="spawn_target" pkg="gazebo_ros" type="spawn_model"
-           args="-sdf -x 3 -z 0.001 -file $(find dl_turtlebot)/models/target.sdf -model target" />
+           args="-sdf -x 3 -z 0.001 -file $(find dl_turtlebot)/models/target.sdf -model target -gazebo_namespace /{namespace}/gazebo" />
      <node name="spawn_boundary" pkg="gazebo_ros" type="spawn_model"
-           args="-sdf -file $(find dl_turtlebot)/models/boundary.sdf -model boundary" />
+           args="-sdf -file $(find dl_turtlebot)/models/boundary.sdf -model boundary -gazebo_namespace /{namespace}/gazebo" />
    </group>

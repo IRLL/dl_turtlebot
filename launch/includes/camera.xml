@@ -1,10 +1,11 @@
 <launch>
   <arg name="name"/>
   <arg name="pose"/>
+  <arg name="namespace"/>
 
   <group ns="$(arg name)">
       <node name="spawn_camera_$(arg name)" pkg="gazebo_ros" type="spawn_model"
-            args="-sdf $(arg pose) -file $(find dl_turtlebot)/models/camera/model.sdf -model $(arg name)" />
+            args="-sdf $(arg pose) -file $(find dl_turtlebot)/models/camera/model.sdf -model $(arg name) -gazebo_namespace /$(arg namespace)/gazebo" />
       <node name="$(arg name)_grey_converter" pkg="dl_turtlebot" type="convert_grey.py"/>
   </group>
 

@@ -21,6 +21,7 @@ if __name__ == "__main__":
     print headertxt
 
     for i in xrange(args.number_of_sims):
-        print simtxt.format("sim{}".format(i+1), 11345+i)
+        ns = "sim{}".format(i+1)
+        print simtxt.format(namespace=ns, port=11345+i)
 
     print "</launch>"

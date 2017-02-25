@@ -7,6 +7,7 @@
   <arg name="3d_sensor" value="$(optenv TURTLEBOT_3D_SENSOR kinect)"/>  <!-- kinect, asus_xtion_pro -->
   <arg name="init_pose"/>
   <arg name="robot_name" />
+  <arg name="namespace" />
 
   <include file="$(find dl_turtlebot)/launch/includes/$(arg base).launch.xml">
     <arg name="base" value="$(arg base)"/>
@@ -14,6 +15,7 @@
     <arg name="3d_sensor" value="$(arg 3d_sensor)"/>
     <arg name="init_pose" value="$(arg init_pose)"/>
     <arg name="robot_name" value="$(arg robot_name)"/>
+    <arg name="namespace" value="$(arg namespace)" />
   </include>
 
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
