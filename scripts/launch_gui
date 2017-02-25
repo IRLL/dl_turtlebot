@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ "$#" -lt 1 ]; then
+    echo "need to supply sim number to connect to!"
+    exit 1
+fi
+
+PORT=$(expr $1 + 11344)
+echo "connecting to sim $1, on port $PORT"
+GAZEBO_MASTER_URI=http://localhost:$PORT gzclient
